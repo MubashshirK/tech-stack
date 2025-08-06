@@ -34,7 +34,7 @@ const AddToCartButton = ({ product, className }: Props) => {
         <div className="text-sm w-full">
           <div className="flex items-center justify-between">
             <span className="text-xs text-darkColor/80">Quantity</span>
-            <QuantityButtons product={product} />
+            <QuantityButtons className="ml-2" product={product} />
           </div>
           <div className="flex items-center justify-between border-t pt-1">
             <span className="text-xs font-semibold">Subtotal</span>

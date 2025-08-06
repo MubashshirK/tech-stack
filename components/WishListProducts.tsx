@@ -110,7 +110,7 @@ const WishListProducts = () => {
               </tbody>
             </table>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 justify-center">
             {visibleProducts < favoriteProduct?.length && (
               <div className="my-5">
                 <Button variant="outline" onClick={loadMore}>
@@ -132,7 +132,7 @@ const WishListProducts = () => {
           {favoriteProduct?.length > 0 && (
             <Button
               onClick={handleResetWishlist}
-              className="mb-5 font-semibold"
+              className="mt-2 mb-5 font-semibold"
               variant="destructive"
               size="lg"
             >
