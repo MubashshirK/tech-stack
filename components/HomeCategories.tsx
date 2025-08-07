@@ -1,5 +1,4 @@
 import React from "react";
-import Title from "./Title";
 import { Category } from "@/sanity.types";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/image";
@@ -7,43 +6,52 @@ import Link from "next/link";
 
 const HomeCategories = ({ categories }: { categories: Category[] }) => {
   return (
-    <div className="bg-white border border-shop_light_green/20 my-10 md:my-20 p-5 lg:p-7 rounded-md">
-      <Title className="border-b pb-3">Popular Categories</Title>
-      <div className="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <section className="bg-white border border-shop_light_green/30 my-10 md:my-20 p-6 lg:p-8 rounded-xl shadow-sm">
+      {/* Title Section */}
+      <div className="flex items-center gap-3 border-b border-gray-200 pb-4 mb-6">
+        <div className="w-1.5 h-6 bg-shop_dark_green rounded-full" />
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-800">
+          Popular Categories
+        </h2>
+      </div>
+
+      {/* Category Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories?.map((category) => (
-          <div
+          <Link
             key={category?._id}
-            className="bg-shop_light_bg p-5 flex items-center gap-3 group"
+            href={{
+              pathname: "/shop",
+              query: { category: category?.slug?.current },
+            }}
+            className="group flex items-center gap-4 bg-shop_light_bg rounded-lg p-4 border border-transparent hover:border-shop_orange transition-all duration-200 hover:shadow-md hover:bg-white"
           >
             {category?.image && (
-              <div className="overflow-hidden border border-shop_orange/30 hover:border-shop_orange hoverEffect w-20 h-20 p-1">
-                <Link href={
-                  {
-                    pathname: "/shop",
-                    query: { category: category?.slug?.current },
-                  }
-                }>
-                  <Image
-                    src={urlFor(category?.image).url()}
-                    alt="categoryImage"
-                    width={500}
-                    height={500}
-                    className="w-full h-full object-contain group-hover:scale-110 hoverEffect"
-                  />
-                </Link>
+              <div className="w-20 h-20 flex-shrink-0 overflow-hidden border border-shop_orange/30 rounded-md p-1 transition-all group-hover:border-shop_orange">
+                <Image
+                  src={urlFor(category?.image).url()}
+                  alt={category?.title || "Category Image"}
+                  width={500}
+                  height={500}
+                  className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                />
               </div>
             )}
             <div className="space-y-1">
-              <h3 className="text-base font-semibold">{category?.title}</h3>
-              <p className="text-sm">
-                <span className="font-bold text-shop_dark_green">{`(${category?.productCount})`}</span>{" "}
-                items Available
+              <h3 className="text-base font-semibold text-gray-800 group-hover:text-shop_dark_green transition-colors">
+                {category?.title}
+              </h3>
+              <p className="text-sm text-gray-600">
+                <span className="inline-block text-xs font-semibold text-white bg-shop_dark_green px-2 py-0.5 rounded-full">
+                  {category?.productCount} items
+                </span>{" "}
+                Available
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

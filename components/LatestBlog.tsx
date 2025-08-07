@@ -11,7 +11,12 @@ const LatestBlog = async () => {
   const blogs = await getLatestBlogs();
   return (
     <div className="mb-10 lg:mb-20">
-      <Title>Latest Blog</Title>
+      <div className="flex items-center gap-3">
+          <div className="w-1.5 h-6 bg-shop_dark_green rounded-sm" />
+          <Title className="text-xl sm:text-2xl font-bold text-gray-800">
+            Latest Blogs
+          </Title>
+        </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-5">
         {blogs?.map((blog) => (
           <div key={blog?._id} className="rounded-lg overflow-hidden">

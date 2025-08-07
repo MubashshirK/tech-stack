@@ -10,76 +10,85 @@ const extraData = [
   {
     title: "Free Delivery",
     description: "Free shipping over $100",
-    icon: <Truck size={45} />,
+    icon: <Truck size={42} />,
   },
   {
     title: "Free Return",
-    description: "Free shipping over $100",
-    icon: <GitCompareArrows size={45} />,
+    description: "Return within 7 days",
+    icon: <GitCompareArrows size={42} />,
   },
   {
     title: "Customer Support",
-    description: "Friendly 27/7 customer support",
-    icon: <Headset size={45} />,
+    description: "Friendly 24/7 customer help",
+    icon: <Headset size={42} />,
   },
   {
-    title: "Money Back guarantee",
+    title: "Money Back Guarantee",
     description: "Quality checked by our team",
-    icon: <ShieldCheck size={45} />,
+    icon: <ShieldCheck size={42} />,
   },
 ];
 
 const ShopByBrands = async () => {
   const brands = await getAllBrands();
   return (
-    <div className="mb-10 lg:mb-20 bg-shop_light_bg p-5 lg:p-7 rounded-md">
-      <div className="flex items-center gap-5 justify-between mb-10">
-        <Title>Shop By Brands</Title>
+    <section className="mb-14 lg:mb-24 bg-gray-50 px-4 sm:px-6 lg:px-8 py-10 rounded-xl">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center gap-3">
+          <div className="w-1.5 h-6 bg-shop_dark_green rounded-sm" />
+          <Title className="text-xl sm:text-2xl font-bold text-gray-800">
+            Shop By Brands
+          </Title>
+        </div>
         <Link
-          href={"/shop"}
-          className="text-sm font-semibold tracking-wide hover:text-shop_btn_dark_green hoverEffect"
+          href="/shop"
+          className="text-sm font-medium text-gray-600 hover:text-shop_btn_dark_green transition"
         >
           View all
         </Link>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-2.5">
+
+      {/* Brand Cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-4 sm:gap-5">
         {brands?.map((brand) => (
           <Link
             key={brand?._id}
             href={{ pathname: "/shop", query: { brand: brand?.slug?.current } }}
-            className="bg-white w-34 h-24 flex items-center justify-center rounded-md overflow-hidden hover:shadow-lg shadow-shop_dark_green/20 hoverEffect"
+            className="group bg-white p-4 rounded-lg shadow-sm border border-gray-100 hover:shadow-md hover:border-shop_light_green transition duration-200 flex items-center justify-center"
           >
             {brand?.image && (
               <Image
-                src={urlFor(brand?.image).url()}
-                alt="brandImage"
+                src={urlFor(brand.image).url()}
+                alt={brand?.title || "Brand"}
                 width={250}
                 height={250}
-                className="w-32 h-20 object-contain"
+                className="w-24 h-16 object-contain group-hover:scale-105 transition-transform"
               />
             )}
           </Link>
         ))}
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-16 p-2 shadow-sm hover:shadow-shop_light_green/20 py-5">
-        {extraData?.map((item, index) => (
+      {/* Extra Data */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        {extraData.map((item, index) => (
           <div
             key={index}
-            className="flex items-center gap-3 group text-lightColor hover:text-shop_light_green"
+            className="flex items-start gap-4 p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition group border border-gray-100"
           >
-            <span className="inline-flex scale-100 group-hover:scale-90 hoverEffect">
-              {item?.icon}
-            </span>
-            <div className="text-sm">
-              <p className="text-darkColor/80 font-bold capitalize">
-                {item?.title}
+            <div className="text-shop_dark_green group-hover:scale-105 transition-transform">
+              {item.icon}
+            </div>
+            <div className="space-y-1 text-sm">
+              <p className="text-gray-800 font-semibold capitalize">
+                {item.title}
               </p>
-              <p className="text-lightColor">{item?.description}</p>
+              <p className="text-gray-500">{item.description}</p>
             </div>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
