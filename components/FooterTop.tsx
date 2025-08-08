@@ -17,21 +17,21 @@ const data: ContactItemData[] = [
   },
   {
     title: "Call Us",
-    subtitle: "+91 1234567890",
+    subtitle: "+91 958 648 597",
     icon: (
       <Phone className="h-6 w-6 text-gray-600 group-hover:text-primary transition-colors" />
     ),
   },
   {
     title: "Working Hours",
-    subtitle: "Mon - Sat: 9:00 AM - 5:00 PM",
+    subtitle: "Mon - Sat: 10:00 AM - 7:00 PM",
     icon: (
       <Clock className="h-6 w-6 text-gray-600 group-hover:text-primary transition-colors" />
     ),
   },
   {
     title: "Email Us",
-    subtitle: "techstack@example.com",
+    subtitle: "xyz@gmail.com",
     icon: (
       <Mail className="h-6 w-6 text-gray-600 group-hover:text-primary transition-colors" />
     ),
