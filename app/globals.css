@@ -6,17 +6,16 @@
 
 @theme {
   --font-poppins: "Poppins", sans-serif;
-  --color-shop_light_pink: #fcf0e4;
-  --color-shop_dark_green: #063c28;
-  --color-shop_btn_dark_green: #063d29;
-  --color-shop_light_bg: #f6f6f6;
-  --color-shop_light_green: #3b9c3c;
-  --color-shop_orange: #fb6c08;
-  --color-darkColor: #151515;
-  --color-lightColor: #52525b;
-  --color-lightOrange: #fca99b;
-  --color-shop_light_green: #3b9c3c;
-  --color-deal-bg: #f1f3f8;
+  --color-shop_light_pink: #f7f4f2;
+  --color-shop_dark_green: #1e293b;
+  --color-shop_btn_dark_green: #0f172a;
+  --color-shop_light_bg: #f1f5f9;
+  --color-shop_light_green: #334e91;
+  --color-shop_orange: #f59e0b;
+  --color-darkColor: #0f172a;
+  --color-lightColor: #64748b;
+  --color-lightOrange: #fbbf24;
+  --color-deal-bg: #e2e8f0;   
 }
 
 :root {
